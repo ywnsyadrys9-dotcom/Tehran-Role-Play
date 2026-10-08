@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Tehran Role Play{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <a href="/" class="brand">
+            <span class="brand-icon">🔥</span>
+            <span>
+                <strong>Tehran Role Play</strong>
+                <small>Community</small>
+            </span>
+        </a>
+
+        <nav class="nav">
+            {% if session.get('user_id') %}
+                <a href="/">خانه</a>
+
+                {% if session.get('role') in ['owner', 'admin'] %}
+                    <a href="/panel">پنل مدیریت</a>
+                {% endif %}
+
+                <a href="/logout">خروج</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main class="page">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div>🔥 Tehran Role Play</div>
+    <div>185.26.33.99:7777</div>
+    <div>@Tehran_Life_Rp</div>
+</footer>
+
+</body>
+</html>
