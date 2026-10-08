@@ -1,0 +1,39 @@
+{% extends "base.html" %}{% block title %}Tehran انجمن | خانه{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-brand"><span class="hero-mark">T</span><div><div class="hero-mini">TEHRAN ROLE PLAY</div><h1>Tehran <b>انجمن</b></h1><p>انجمن رسمی بازیکنان و مدیریت تهران رول پلی</p></div></div>
+    <div class="hero-actions"><a href="#forums" class="gold-btn">مشاهده انجمن</a><a href="#about" class="dark-btn">درباره ما</a></div>
+  </div>
+  <div class="hero-bottom"><span>● سرور آنلاین</span><span>IP : 185.26.33.99:7777</span><span>Channel : @Tehran_Life_Rp</span></div>
+</section>
+
+<section class="announcement"><span class="ann-dot"></span><div><b>به تهران انجمن خوش آمدید</b><small>برای ثبت درخواست‌ها و ارتباط با مدیریت، از بخش‌های پایین استفاده کنید.</small></div><a href="/login">ورود</a></section>
+
+<section id="forums" class="section-block">
+  <div class="section-head"><div><div class="section-kicker">TEHRAN COMMUNITY</div><h2>بخش‌های انجمن</h2><p>بخش مورد نظر خود را انتخاب کنید.</p></div><span class="section-count">۴ بخش</span></div>
+  <div class="forum-grid">
+  {% for key,name in forms.items() %}
+  <a class="forum-card" href="/form/{{key}}">
+    <div class="forum-icon">{% if key=='admin' %}♛{% elif key=='gang' %}⚔{% elif key=='helper' %}✦{% else %}♜{% endif %}</div>
+    <div class="forum-text"><h3>{{name}}</h3><p>ارسال درخواست و گفت‌وگو با مدیریت</p><div class="card-meta"><span>مشاهده بخش</span><b>←</b></div></div>
+  </a>
+  {% endfor %}
+  </div>
+</section>
+
+<section id="latest" class="section-block">
+ <div class="section-head"><div><div class="section-kicker">COMMUNITY</div><h2>آخرین مطالب</h2><p>اطلاعات و بخش‌های مهم انجمن</p></div></div>
+ <div class="latest-list">
+  <div class="latest-row"><span class="latest-icon">📢</span><div><b>اطلاعیه‌های سرور</b><small>اخبار و اطلاعیه‌های مهم تهران رول پلی</small></div><span class="row-arrow">←</span></div>
+  <div class="latest-row"><span class="latest-icon">🎯</span><div><b>ایونت‌ها و مسابقات</b><small>زمان‌بندی رویدادها و برنامه‌های ویژه</small></div><span class="row-arrow">←</span></div>
+  <div class="latest-row"><span class="latest-icon">📜</span><div><b>قوانین و راهنما</b><small>قوانین بازی و راهنمای استفاده از انجمن</small></div><span class="row-arrow">←</span></div>
+ </div>
+</section>
+
+<section id="about" class="about-card">
+ <div><div class="section-kicker">ABOUT US</div><h2>درباره Tehran انجمن</h2><p>یه شهر جدید، یه زندگی جدید، یه داستان که خودت می‌سازی! اینجا مرکز ارتباط بازیکنان، ارسال درخواست‌ها و ارتباط با مدیریت Tehran Role Play است.</p></div>
+ <div class="about-stats"><div><b>185.26.33.99:7777</b><span>آی‌پی سرور</span></div><div><b>@Tehran_Life_Rp</b><span>کانال رسمی</span></div></div>
+</section>
+{% endblock %}

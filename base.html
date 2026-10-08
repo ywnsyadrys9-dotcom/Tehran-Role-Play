@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Tehran انجمن{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">T</span><span>Tehran <em>انجمن</em></span></a>
+    <nav class="nav">
+      <a class="nav-btn active" href="/">خانه</a>
+      <a class="nav-btn" href="/#forums">انجمن</a>
+      <a class="nav-btn" href="/#latest">آخرین مطالب</a>
+      <a class="nav-btn" href="/#about">درباره ما</a>
+      {% if session.get('user') %}
+        <span class="user-pill">{{session['user']['game_name']}}{% if session['user']['role'] in ['owner','admin'] %}<i class="verified">✓</i>{% endif %}</span>
+        {% if session['user']['role'] in ['owner','admin'] %}<a class="nav-btn manager-link" href="/panel">مدیریت</a>{% endif %}
+        <a class="login-btn" href="/logout">خروج</a>
+      {% else %}<a class="login-btn" href="/login">ورود / ثبت‌نام</a>{% endif %}
+    </nav>
+  </div>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer><div>Tehran انجمن</div><span>Tehran Role Play • 185.26.33.99:7777 • @Tehran_Life_Rp</span></footer>
+</body></html>

@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}{{title}} | Tehran انجمن{% endblock %}
+{% block content %}
+<section class="chat-wrap"><div class="chat-head"><div><div class="section-kicker">TEHRAN COMMUNITY</div><h2>{{title}}</h2><small>نام گیم: {{form['game_name']}}{% if session.get('user',{}).get('role') in ['owner','admin'] %} <i class="verified">✓</i>{% endif %}</small></div><span class="status {{'open' if form['status']=='open' else 'closed'}}">{{'باز' if form['status']=='open' else 'بسته'}}</span></div>
+<div class="messages">{% for m in messages %}<div class="msg {{'mine' if m['sender_name']==session.get('user',{}).get('game_name') else ''}}"><div class="msg-user"><b>{{m['sender_name']}}</b>{% if m['sender_role'] in ['owner','admin'] %}<i class="verified">✓</i><span class="manager-label">مدیریت</span>{% endif %}</div><p>{{m['message']}}</p><time>{{m['created_at']}}</time></div>{% else %}<div class="empty">هنوز پیامی ثبت نشده است.</div>{% endfor %}</div>
+{% if form['status']=='open' or session.get('user',{}).get('role') in ['owner','admin'] %}<form class="send" method="post" action="/form/{{form['id']}}/send"><input name="message" placeholder="پیام خود را بنویسید..." required><button>➤</button></form>{% else %}<div class="closed">این بخش توسط مدیریت بسته شده است.</div>{% endif %}<a class="back" href="/">← بازگشت به انجمن</a></section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}Tehran انجمن | ورود{% endblock %}
+{% block content %}
+<section class="auth-page"><div class="auth-card">
+ <div class="auth-logo">T</div><div class="section-kicker">TEHRAN COMMUNITY</div><h1>ورود به انجمن</h1><p class="muted">با نام گیم و رمز گیم خود وارد شوید.</p>
+ {% if error %}<div class="error">{{error}}</div>{% endif %}
+ <form class="form" method="post" action="/login"><label>نام گیم<input name="game_name" required autocomplete="username"></label><label>رمز گیم شما<input type="password" name="password" required autocomplete="current-password"></label><button>ورود به انجمن</button></form>
+ <div class="register-box"><b>حساب ندارید؟</b><span class="muted">ثبت‌نام سریع</span><form class="form compact" method="post" action="/register"><label>نام گیم<input name="game_name" required></label><label>رمز گیم<input type="password" name="password" required></label><button class="secondary">ثبت‌نام</button></form></div>
+</div></section>
+{% endblock %}
